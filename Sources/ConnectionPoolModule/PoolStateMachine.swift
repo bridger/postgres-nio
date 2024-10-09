@@ -359,7 +359,6 @@ struct PoolStateMachine<
     @inlinable
     mutating func connectionKeepAliveTimerTriggered(_ connectionID: ConnectionID) -> Action {
         precondition(self.configuration.keepAliveDuration != nil)
-        precondition(self.requestQueue.isEmpty)
 
         guard let keepAliveAction = self.connections.keepAliveIfIdle(connectionID) else {
             return .none()
